@@ -6,6 +6,7 @@ import { fromCognitoIdentityPool } from "@aws-sdk/credential-providers";
 import { DecryptCommand, EncryptCommand, KMSClient } from "@aws-sdk/client-kms";
 import { STSClient, GetCallerIdentityCommand } from "@aws-sdk/client-sts";
 import { social } from "../utils";
+import { default as TextDecoder } from "text-decoder" ;
 
 export default function OauthPage() {
   const searchParams = useSearchParams();
@@ -31,7 +32,11 @@ export default function OauthPage() {
         CiphertextBlob: response.CiphertextBlob!,
       };
       const data = await client.send(new DecryptCommand(params2));
-      console.log("Decrypted plaintext:", data.Plaintext?.toString("utf8"));
+      const td = new TextDecoder();
+      const string = td.console.log(
+        "Decrypted plaintext:",
+        data.Plaintext?.toString()
+      );
 
       return response.CiphertextBlob;
     } catch (e) {
@@ -84,7 +89,7 @@ export default function OauthPage() {
           });
 
           const credientals = await getCredentials(
-            res?.tokens?.accessToken?.toString() || ""
+            res?.tokens?.idToken?.toString() || ""
           );
           const client = new KMSClient({
             region: "ap-southeast-2",
