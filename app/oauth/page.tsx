@@ -6,7 +6,7 @@ import { fromCognitoIdentityPool } from "@aws-sdk/credential-providers";
 import { DecryptCommand, EncryptCommand, KMSClient } from "@aws-sdk/client-kms";
 import { STSClient, GetCallerIdentityCommand } from "@aws-sdk/client-sts";
 import { social } from "../utils";
-import { default as TextDecoder } from "text-decoder" ;
+import TextDecoder from "text-decoder";
 
 export default function OauthPage() {
   const searchParams = useSearchParams();
@@ -32,11 +32,11 @@ export default function OauthPage() {
         CiphertextBlob: response.CiphertextBlob!,
       };
       const data = await client.send(new DecryptCommand(params2));
-      const td = new TextDecoder();
-      const string = td.console.log(
-        "Decrypted plaintext:",
-        data.Plaintext?.toString()
-      );
+      const asciiArray = data.Plaintext?.toString().split(",").map(Number);
+      const string = asciiArray
+        .map((code: number) => String.fromCharCode(code))
+        .join("");
+      console.log("Decrypted plaintext:", string);
 
       return response.CiphertextBlob;
     } catch (e) {
