@@ -1,6 +1,6 @@
-import { SocialLogin } from "aa-conla-social-sdk";
+import { SocialAuth } from "aa-conla-social-sdk";
 
-export const social = new SocialLogin(
-  "http://localhost:3000/oauth",
-  "http://localhost:3000"
-);
+export const social = new SocialAuth({
+  redirectSignIn: "https://social-client-demo.vercel.app/oauth",
+  redirectSignOut: "https://social-client-demo.vercel.app",
+});

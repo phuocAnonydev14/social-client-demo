@@ -1,22 +1,13 @@
 "use client";
 
 import { social } from "@/app/utils";
-import {
-  KMSClient,
-  ListAliasesCommand,
-  GenerateDataKeyCommand,
-  EncryptCommand,
-  DecryptCommand,
-} from "@aws-sdk/client-kms";
-import { fromCognitoIdentityPool } from "@aws-sdk/credential-providers";
-import { useState } from "react";
 
 export const SocialSdk = () => {
   return (
     <div style={{ display: "flex", gap: "50px" }}>
       <button
         onClick={() => {
-          social.auth.loginGoogle("http://localhost:3000/oauth");
+          social.auth.loginGoogle();
         }}
       >
         Login sdk
