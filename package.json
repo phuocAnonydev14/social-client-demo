@@ -11,12 +11,13 @@
   "dependencies": {
     "@aws-sdk/client-kms": "^3.616.0",
     "@aws-sdk/credential-providers": "^3.617.0",
-    "aa-conla-social-sdk": "^0.2.10",
+    "aa-conla-social-sdk": "^0.2.24",
     "aws-amplify": "^6.4.2",
     "crypto-js": "^4.2.0",
     "next": "14.2.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "text-decoder": "^1.1.1"
   },
   "devDependencies": {
     "@types/node": "^20",
