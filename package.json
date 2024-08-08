@@ -30,6 +30,7 @@
     "text-decoder": "^1.1.1"
   },
   "devDependencies": {
+    "@types/chrome": "^0.0.269",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

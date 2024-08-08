@@ -59,6 +59,7 @@ export default function OauthPage() {
       });
       setEmail(userRes?.user.email);
       const privateKey = await social.user?.getPrivateKey();
+
       setUser(userRes?.user);
       setPrivateKey(privateKey || "");
       console.log({ privateKey });
@@ -82,6 +83,10 @@ export default function OauthPage() {
       <p style={{ marginBottom: "30px" }}>
         <strong>Your private key: </strong>
         <p style={{ wordBreak: "break-word" }}>{privateKey}</p>
+      </p>
+      <p style={{ marginBottom: "30px" }}>
+        <strong>Your id token: </strong>
+        <p style={{ wordBreak: "break-word" }}>{token?.idToken}</p>
       </p>
       <Dialog open={isShowModal} onOpenChange={setIsShowModal}>
         <DialogContent>
